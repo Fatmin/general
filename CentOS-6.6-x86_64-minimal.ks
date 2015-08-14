@@ -1,6 +1,5 @@
 # Kickstart file for RHEL 6 Minimal
 # Small Disk
-# CentOS-6.6-x86_64-minimal.ks
 
 text
 install
@@ -8,7 +7,7 @@ url --url=http://10.1.0.106/ks/loop/CentOS-6.6-x86_64-bin-DVD1
 lang en_US.UTF-8
 keyboard us
 network --onboot yes --device eth0 --bootproto dhcp --noipv6
-rootpw  --iscrypted $6$X/4YYSv.khJXmssR/Vw/m2aDEfsdfasdfe34FPtU4kXdcSCoOjPiXLrVxqfKKOWUcvUOFiqlQ1
+rootpw  --iscrypted $6$X/4YYZPN$BSv.khJXms8N8DRssR/VlN5w/m80FFpPup2aX0DWEFfDp734FPtU4kXdcSCoOjPiXLrVxqfKKOWUcvUOFiqlQ1
 firewall --disabled
 authconfig --enableshadow --passalgo=sha512
 selinux --permissive
@@ -27,7 +26,8 @@ logvol / --fstype=ext4 --name=lv_root --vgname=VolGroup --size=1024 --grow
 logvol swap --name=lv_swap --vgname=VolGroup --size=1024 
 
 #Network
-network --device=eth0 --bootproto=dhcp --nameserver=10.1.0.110
+#network --device=eth0 --bootproto=dhcp --nameserver=10.1.0.110
+network --device=eth0 --bootproto=query
 
 # Package Selection
 %packages --nobase --excludedocs
